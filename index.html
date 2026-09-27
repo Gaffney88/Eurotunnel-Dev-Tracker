@@ -7,13 +7,6 @@
 
   <title>Dev Tracker</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  >
-
   <style>
     * {
       box-sizing: border-box;
@@ -21,101 +14,84 @@
 
     body {
       margin: 0;
-      min-height: 100vh;
-
-      background: #0f1115;
-      color: #ffffff;
-
-      font-family: Inter, Arial, sans-serif;
-
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
+      background: #111111;
+      color: white;
+      font-family: Arial, sans-serif;
     }
 
     .container {
       width: 100%;
-      max-width: 850px;
-      padding: 50px 20px;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 40px 20px;
     }
 
     h1 {
       margin: 0 0 6px;
-      font-size: 28px;
-      font-weight: 700;
+      font-size: 24px;
+      font-weight: 600;
     }
 
-    .description {
-      margin: 0 0 30px;
-      color: #888e99;
+    .subtitle {
+      margin: 0 0 25px;
+      color: #888888;
       font-size: 14px;
     }
 
-    .section-title {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
+    .section {
       margin-bottom: 10px;
-
-      color: #9ca3af;
+      color: #aaaaaa;
       font-size: 13px;
-      font-weight: 600;
     }
 
     .card {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
 
-      padding: 18px;
+      padding: 16px;
 
-      background: #17191e;
-      border: 1px solid #292c33;
-      border-radius: 10px;
+      background: #181818;
+      border: 1px solid #262626;
+      border-radius: 8px;
 
+      color: white;
       text-decoration: none;
-      color: inherit;
 
-      transition: background 0.15s ease, border-color 0.15s ease;
+      transition: border-color 0.15s ease;
     }
 
     .card:hover {
-      background: #1b1e24;
-      border-color: #353942;
+      border: 1px solid white;
     }
 
     .left {
       display: flex;
       align-items: center;
-      gap: 14px;
-
-      min-width: 0;
+      gap: 13px;
     }
 
     .avatar-wrap {
       position: relative;
-      flex-shrink: 0;
     }
 
     .avatar,
     .avatar-img {
-      width: 52px;
-      height: 52px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
     }
 
     .avatar {
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
 
-      background: #4f7cff;
+      background: #3d6df2;
       color: white;
 
-      font-size: 16px;
-      font-weight: 700;
+      font-size: 14px;
+      font-weight: bold;
     }
 
     .avatar-img {
@@ -125,79 +101,54 @@
 
     .status-dot {
       position: absolute;
-      right: -1px;
-      bottom: -1px;
+      right: 0;
+      bottom: 0;
 
-      width: 14px;
-      height: 14px;
+      width: 12px;
+      height: 12px;
 
+      border: 2px solid #181818;
       border-radius: 50%;
-      border: 3px solid #17191e;
 
-      background: #777;
-    }
-
-    .info {
-      min-width: 0;
+      background: #777777;
     }
 
     .name {
-      margin: 0;
-
       font-size: 15px;
-      font-weight: 700;
+      font-weight: 600;
     }
 
     .status {
       margin-top: 4px;
-
-      color: #777;
+      color: #777777;
       font-size: 13px;
-      font-weight: 500;
     }
 
     .extra {
-      margin-top: 3px;
-
-      color: #7f8590;
+      margin-top: 2px;
+      color: #666666;
       font-size: 12px;
-
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
     }
 
     .profile {
-      flex-shrink: 0;
+      padding: 7px 10px;
 
-      padding: 8px 12px;
+      border: 1px solid #2d2d2d;
+      border-radius: 6px;
 
-      border: 1px solid #30343c;
-      border-radius: 7px;
-
-      color: #cfd3da;
+      color: #aaaaaa;
       font-size: 12px;
-      font-weight: 600;
     }
 
     .footer {
-      margin-top: 12px;
-
-      color: #626873;
+      margin-top: 10px;
+      color: #666666;
       font-size: 11px;
     }
 
     @media (max-width: 600px) {
-      .container {
-        padding: 30px 14px;
-      }
-
       .profile {
         display: none;
-      }
-
-      .card {
-        padding: 15px;
       }
     }
   </style>
@@ -208,18 +159,17 @@
   <div class="container">
 
     <h1>Dev Tracker</h1>
-    <p class="description">
+
+    <p class="subtitle">
       Development team status
     </p>
 
-    <div class="section-title">
-      <span>Development Team</span>
-      <span>1 member</span>
+    <div class="section">
+      Development Team
     </div>
 
     <a
       class="card"
-      id="card"
       href="https://www.roblox.com/users/423428585/profile"
       target="_blank"
       rel="noopener noreferrer"
@@ -234,8 +184,8 @@
           </div>
 
           <img
-            id="avatarImg"
             class="avatar-img"
+            id="avatarImg"
             alt="Roblox avatar"
           >
 
@@ -246,7 +196,7 @@
 
         </div>
 
-        <div class="info">
+        <div>
 
           <div
             class="name"
@@ -259,7 +209,7 @@
             class="status"
             id="status"
           >
-            Checking status...
+            Checking...
           </div>
 
           <div
@@ -295,27 +245,27 @@
     const STATUS = {
       playing: {
         text: "Playing",
-        color: "#3ddc84"
+        color: "#42d77d"
       },
 
       studio: {
         text: "In Studio",
-        color: "#ff9a3d"
+        color: "#f0a34a"
       },
 
       online: {
         text: "Online",
-        color: "#5b8dff"
+        color: "#5b8cff"
       },
 
       offline: {
         text: "Offline",
-        color: "#777"
+        color: "#777777"
       },
 
       unknown: {
         text: "Unknown",
-        color: "#777"
+        color: "#777777"
       }
     };
 
@@ -334,17 +284,20 @@
       return response.json();
     }
 
-    function setStatus(type, extraText = "") {
+    function setStatus(type, extra = "Roblox") {
       const status = STATUS[type] || STATUS.unknown;
 
-      document.getElementById("status").textContent = status.text;
-      document.getElementById("status").style.color = status.color;
+      document.getElementById("status").textContent =
+        status.text;
+
+      document.getElementById("status").style.color =
+        status.color;
 
       document.getElementById("statusDot").style.background =
         status.color;
 
       document.getElementById("extra").textContent =
-        extraText || "Roblox";
+        extra;
     }
 
     async function loadUser() {
@@ -356,7 +309,7 @@
             data.name;
         }
       } catch (error) {
-        console.error("User error:", error);
+        console.error(error);
       }
     }
 
@@ -367,7 +320,9 @@
         const imageUrl =
           data?.data?.[0]?.imageUrl;
 
-        if (!imageUrl) return;
+        if (!imageUrl) {
+          return;
+        }
 
         const img =
           document.getElementById("avatarImg");
@@ -380,7 +335,7 @@
         };
 
       } catch (error) {
-        console.error("Avatar error:", error);
+        console.error(error);
       }
     }
 
@@ -407,18 +362,20 @@
           typeMap[presence.userPresenceType] ||
           "unknown";
 
-        let extra = "";
+        let extra = "Roblox";
+
+        if (type === "offline") {
+          extra = "Not currently online";
+        }
 
         if (type === "playing") {
           extra =
             presence.lastLocation ||
             "Playing on Roblox";
-        } else if (type === "studio") {
+        }
+
+        if (type === "studio") {
           extra = "Roblox Studio";
-        } else if (type === "offline") {
-          extra = "Not currently online";
-        } else {
-          extra = "Roblox";
         }
 
         setStatus(type, extra);
@@ -427,12 +384,15 @@
           `Last checked ${new Date().toLocaleTimeString()}`;
 
       } catch (error) {
-        console.error("Presence error:", error);
+        console.error(error);
 
-        setStatus("unknown");
+        setStatus(
+          "unknown",
+          "Couldn't check Roblox"
+        );
 
         document.getElementById("footer").textContent =
-          "Couldn't check Roblox right now";
+          "Connection error";
       }
     }
 
@@ -446,121 +406,12 @@
 
     start();
 
-    setInterval(updateStatus, POLL_TIME);
+    setInterval(
+      updateStatus,
+      POLL_TIME
+    );
   </script>
 
 </body>
 </html>
 ```
-
-### `api/roblox.js`
-
-```js
-export default async function handler(req, res) {
-  const userId = Number(req.query.userId);
-  const type = req.query.type;
-
-  if (!Number.isInteger(userId)) {
-    return res.status(400).json({
-      error: "Invalid user ID"
-    });
-  }
-
-  try {
-
-    // USER
-    if (type === "user") {
-      const response = await fetch(
-        `https://users.roblox.com/v1/users/${userId}`
-      );
-
-      if (!response.ok) {
-        throw new Error("Failed to get user");
-      }
-
-      const data = await response.json();
-
-      return res.status(200).json(data);
-    }
-
-    // AVATAR
-    if (type === "avatar") {
-      const response = await fetch(
-        `https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=${userId}&size=150x150&format=Png&isCircular=true`
-      );
-
-      if (!response.ok) {
-        throw new Error("Failed to get avatar");
-      }
-
-      const data = await response.json();
-
-      return res.status(200).json(data);
-    }
-
-    // PRESENCE
-    if (type === "presence") {
-      const response = await fetch(
-        "https://presence.roblox.com/v1/presence/users",
-        {
-          method: "POST",
-
-          headers: {
-            "Content-Type": "application/json"
-          },
-
-          body: JSON.stringify({
-            userIds: [userId]
-          })
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error("Failed to get presence");
-      }
-
-      const data = await response.json();
-
-      /*
-       * Being offline is NOT an error.
-       * Roblox simply returns:
-       *
-       * userPresenceType: 0
-       *
-       * which the frontend displays as "Offline".
-       */
-
-      return res.status(200).json(data);
-    }
-
-    return res.status(400).json({
-      error: "Unknown request type"
-    });
-
-  } catch (error) {
-
-    console.error(error);
-
-    return res.status(500).json({
-      error: error.message
-    });
-  }
-}
-```
-
-Your folder should simply be:
-
-```text
-/
-├── index.html
-└── api/
-    └── roblox.js
-```
-
-So when HARRY2O6 is offline, the page will show:
-
-**HARRY2O6**
-**Offline**
-*Not currently online*
-
-and it will still try to load their Roblox username and avatar separately.
