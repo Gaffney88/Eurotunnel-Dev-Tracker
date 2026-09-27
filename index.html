@@ -1,11 +1,10 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Dev Tracker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -14,61 +13,85 @@
 
     body {
       margin: 0;
-      background: #111111;
-      color: white;
-      font-family: Arial, sans-serif;
+      background: #0b0f19;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.08) 0%, transparent 40%);
+      color: #f3f4f6;
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
     }
 
     .container {
       width: 100%;
-      max-width: 700px;
+      max-width: 720px;
       margin: 0 auto;
-      padding: 40px 20px;
+      padding: 50px 20px;
+    }
+
+    header {
+      margin-bottom: 30px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      padding-bottom: 20px;
     }
 
     h1 {
       margin: 0 0 6px;
-      font-size: 24px;
-      font-weight: 600;
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #ffffff 0%, #9ca3af 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .subtitle {
-      margin: 0 0 25px;
-      color: #888888;
+      margin: 0;
+      color: #9ca3af;
       font-size: 14px;
     }
 
     .section {
-      margin-bottom: 10px;
-      color: #aaaaaa;
-      font-size: 13px;
+      margin-bottom: 14px;
+      color: #6b7280;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .team-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
 
     .card {
       display: flex;
       align-items: center;
       justify-content: space-between;
-
-      padding: 16px;
-
-      background: #181818;
-      border: 1px solid #262626;
-      border-radius: 8px;
-
+      padding: 18px 20px;
+      background: rgba(24, 24, 27, 0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 14px;
       color: white;
       text-decoration: none;
-
-      transition: border-color 0.15s ease;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.3);
     }
 
     .card:hover {
-      border: 1px solid white;
+      border-color: rgba(59, 130, 246, 0.4);
+      background: rgba(30, 30, 35, 0.85);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px -4px rgba(59, 130, 246, 0.15);
     }
 
     .left {
       display: flex;
       align-items: center;
-      gap: 13px;
+      gap: 16px;
     }
 
     .avatar-wrap {
@@ -77,8 +100,8 @@
 
     .avatar,
     .avatar-img {
-      width: 48px;
-      height: 48px;
+      width: 52px;
+      height: 52px;
       border-radius: 50%;
     }
 
@@ -86,69 +109,122 @@
       display: flex;
       align-items: center;
       justify-content: center;
-
-      background: #3d6df2;
+      background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
       color: white;
-
-      font-size: 14px;
+      font-size: 15px;
       font-weight: bold;
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
     }
 
     .avatar-img {
       display: none;
       object-fit: cover;
+      border: 2px solid rgba(255, 255, 255, 0.1);
     }
 
     .status-dot {
       position: absolute;
-      right: 0;
-      bottom: 0;
-
-      width: 12px;
-      height: 12px;
-
-      border: 2px solid #181818;
+      right: 2px;
+      bottom: 2px;
+      width: 13px;
+      height: 13px;
+      border: 2px solid #18181b;
       border-radius: 50%;
+      background: #71717a;
+      transition: background 0.3s ease;
+    }
 
-      background: #777777;
+    .info {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
     }
 
     .name {
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 600;
+      letter-spacing: -0.2px;
     }
 
-    .status {
-      margin-top: 4px;
-      color: #777777;
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       font-size: 13px;
+      font-weight: 500;
     }
 
     .extra {
-      margin-top: 2px;
-      color: #666666;
+      color: #9ca3af;
       font-size: 12px;
+      max-width: 320px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
-    .profile {
-      padding: 7px 10px;
-
-      border: 1px solid #2d2d2d;
-      border-radius: 6px;
-
-      color: #aaaaaa;
+    .profile-btn {
+      padding: 8px 14px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      color: #d1d5db;
       font-size: 12px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .card:hover .profile-btn {
+      background: #3b82f6;
+      border-color: #3b82f6;
+      color: white;
     }
 
     .footer {
-      margin-top: 10px;
-      color: #666666;
-      font-size: 11px;
+      margin-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #6b7280;
+      font-size: 12px;
+    }
+
+    .live-indicator {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background-color: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+      }
+      70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+      }
+      100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+      }
     }
 
     @media (max-width: 600px) {
-      .profile {
+      .profile-btn {
         display: none;
+      }
+      .container {
+        padding: 25px 15px;
       }
     }
   </style>
@@ -158,260 +234,148 @@
 
   <div class="container">
 
-    <h1>Dev Tracker</h1>
+    <header>
+      <h1>Dev Tracker</h1>
+      <p class="subtitle">Real-time development team presence status</p>
+    </header>
 
-    <p class="subtitle">
-      Development team status
-    </p>
+    <div class="section">Development Team</div>
 
-    <div class="section">
-      Development Team
+    <div class="team-grid" id="teamGrid">
+      <!-- Cards will be dynamically generated here -->
     </div>
 
-    <a
-      class="card"
-      href="https://www.roblox.com/users/423428585/profile"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-
-      <div class="left">
-
-        <div class="avatar-wrap">
-
-          <div class="avatar" id="avatar">
-            H2
-          </div>
-
-          <img
-            class="avatar-img"
-            id="avatarImg"
-            alt="Roblox avatar"
-          >
-
-          <span
-            class="status-dot"
-            id="statusDot"
-          ></span>
-
-        </div>
-
-        <div>
-
-          <div
-            class="name"
-            id="name"
-          >
-            HARRY2O6
-          </div>
-
-          <div
-            class="status"
-            id="status"
-          >
-            Checking...
-          </div>
-
-          <div
-            class="extra"
-            id="extra"
-          >
-            Roblox
-          </div>
-
-        </div>
-
+    <div class="footer">
+      <div class="live-indicator">
+        <span class="pulse-dot"></span>
+        <span>Auto-refreshing active</span>
       </div>
-
-      <div class="profile">
-        View Profile
-      </div>
-
-    </a>
-
-    <div
-      class="footer"
-      id="footer"
-    >
-      Checking Roblox...
+      <div id="footer">Checking Roblox...</div>
     </div>
 
   </div>
 
   <script>
-    const USER_ID = 423428585;
+    const USERS = [
+      { id: 423428585, defaultName: "HARRY2O6", initials: "H2" },
+      { id: 154454341, defaultName: "ericplane", initials: "EP" }
+    ];
+
     const POLL_TIME = 15000;
 
     const STATUS = {
-      playing: {
-        text: "Playing",
-        color: "#42d77d"
-      },
-
-      studio: {
-        text: "In Studio",
-        color: "#f0a34a"
-      },
-
-      online: {
-        text: "Online",
-        color: "#5b8cff"
-      },
-
-      offline: {
-        text: "Offline",
-        color: "#777777"
-      },
-
-      unknown: {
-        text: "Unknown",
-        color: "#777777"
-      }
+      playing: { text: "Playing", color: "#10b981" },
+      studio: { text: "In Studio", color: "#f59e0b" },
+      online: { text: "Online", color: "#3b82f6" },
+      offline: { text: "Offline", color: "#71717a" },
+      unknown: { text: "Unknown", color: "#71717a" }
     };
 
-    async function getData(type) {
-      const response = await fetch(
-        `/api/roblox?type=${type}&userId=${USER_ID}`,
-        {
-          cache: "no-store"
-        }
-      );
+    // Render cards dynamically
+    function renderCards() {
+      const grid = document.getElementById("teamGrid");
+      grid.innerHTML = USERS.map(user => `
+        <a class="card" href="https://www.roblox.com/users/${user.id}/profile" target="_blank" rel="noopener noreferrer" data-user-id="${user.id}">
+          <div class="left">
+            <div class="avatar-wrap">
+              <div class="avatar" id="avatar-${user.id}">${user.initials}</div>
+              <img class="avatar-img" id="avatarImg-${user.id}" alt="Roblox avatar">
+              <span class="status-dot" id="statusDot-${user.id}"></span>
+            </div>
+            <div class="info">
+              <div class="name" id="name-${user.id}">${user.defaultName}</div>
+              <div class="status-badge" id="status-${user.id}" style="color: #71717a;">Checking...</div>
+              <div class="extra" id="extra-${user.id}">Roblox</div>
+            </div>
+          </div>
+          <div class="profile-btn">View Profile</div>
+        </a>
+      `).join('');
+    }
 
-      if (!response.ok) {
-        throw new Error("Request failed");
-      }
-
+    async function fetchUserData(userId, type) {
+      const response = await fetch(`/api/roblox?type=${type}&userId=${userId}`, {
+        cache: "no-store"
+      });
+      if (!response.ok) throw new Error("Request failed");
       return response.json();
     }
 
-    function setStatus(type, extra = "Roblox") {
-      const status = STATUS[type] || STATUS.unknown;
-
-      document.getElementById("status").textContent =
-        status.text;
-
-      document.getElementById("status").style.color =
-        status.color;
-
-      document.getElementById("statusDot").style.background =
-        status.color;
-
-      document.getElementById("extra").textContent =
-        extra;
-    }
-
-    async function loadUser() {
+    async function updateUserInfo(user) {
       try {
-        const data = await getData("user");
-
+        const data = await fetchUserData(user.id, "user");
         if (data.name) {
-          document.getElementById("name").textContent =
-            data.name;
+          document.getElementById(`name-${user.id}`).textContent = data.name;
         }
-      } catch (error) {
-        console.error(error);
+      } catch (err) {
+        console.error(err);
       }
     }
 
-    async function loadAvatar() {
+    async function updateAvatar(user) {
       try {
-        const data = await getData("avatar");
+        const data = await fetchUserData(user.id, "avatar");
+        const imageUrl = data?.data?.[0]?.imageUrl;
+        if (!imageUrl) return;
 
-        const imageUrl =
-          data?.data?.[0]?.imageUrl;
-
-        if (!imageUrl) {
-          return;
-        }
-
-        const img =
-          document.getElementById("avatarImg");
-
+        const img = document.getElementById(`avatarImg-${user.id}`);
         img.src = imageUrl;
-
         img.onload = () => {
           img.style.display = "block";
-          document.getElementById("avatar").style.display = "none";
+          document.getElementById(`avatar-${user.id}`).style.display = "none";
         };
-
-      } catch (error) {
-        console.error(error);
+      } catch (err) {
+        console.error(err);
       }
     }
 
-    async function updateStatus() {
+    async function updatePresence(user) {
       try {
-        const data = await getData("presence");
+        const data = await fetchUserData(user.id, "presence");
+        const presence = data?.userPresences?.[0];
 
-        const presence =
-          data?.userPresences?.[0];
-
-        if (!presence) {
-          setStatus("unknown");
-          return;
-        }
-
-        const typeMap = {
-          0: "offline",
-          1: "online",
-          2: "playing",
-          3: "studio"
-        };
-
-        const type =
-          typeMap[presence.userPresenceType] ||
-          "unknown";
+        const typeMap = { 0: "offline", 1: "online", 2: "playing", 3: "studio" };
+        const type = presence ? (typeMap[presence.userPresenceType] || "unknown") : "offline";
+        const statusObj = STATUS[type] || STATUS.unknown;
 
         let extra = "Roblox";
+        if (type === "offline") extra = "Not currently online";
+        if (type === "playing") extra = presence.lastLocation || "Playing on Roblox";
+        if (type === "studio") extra = "Roblox Studio";
 
-        if (type === "offline") {
-          extra = "Not currently online";
-        }
+        // Update UI elements
+        const statusEl = document.getElementById(`status-${user.id}`);
+        statusEl.textContent = statusObj.text;
+        statusEl.style.color = statusObj.color;
 
-        if (type === "playing") {
-          extra =
-            presence.lastLocation ||
-            "Playing on Roblox";
-        }
+        document.getElementById(`statusDot-${user.id}`).style.background = statusObj.color;
+        document.getElementById(`extra-${user.id}`).textContent = extra;
 
-        if (type === "studio") {
-          extra = "Roblox Studio";
-        }
-
-        setStatus(type, extra);
-
-        document.getElementById("footer").textContent =
-          `Last checked ${new Date().toLocaleTimeString()}`;
-
-      } catch (error) {
-        console.error(error);
-
-        setStatus(
-          "unknown",
-          "Couldn't check Roblox"
-        );
-
-        document.getElementById("footer").textContent =
-          "Connection error";
+      } catch (err) {
+        console.error(err);
+        const statusEl = document.getElementById(`status-${user.id}`);
+        statusEl.textContent = "Unknown";
+        statusEl.style.color = STATUS.unknown.color;
+        document.getElementById(`extra-${user.id}`).textContent = "Connection error";
       }
     }
 
-    async function start() {
-      await Promise.all([
-        loadUser(),
-        loadAvatar(),
-        updateStatus()
-      ]);
+    async function refreshAll() {
+      await Promise.all(USERS.map(async (user) => {
+        await Promise.all([
+          updateUserInfo(user),
+          updateAvatar(user),
+          updatePresence(user)
+        ]);
+      }));
+      document.getElementById("footer").textContent = `Last checked ${new Date().toLocaleTimeString()}`;
     }
 
-    start();
-
-    setInterval(
-      updateStatus,
-      POLL_TIME
-    );
+    // Initialize
+    renderCards();
+    refreshAll();
+    setInterval(refreshAll, POLL_TIME);
   </script>
 
 </body>
 </html>
-```
