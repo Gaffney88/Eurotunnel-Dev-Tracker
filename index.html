@@ -13,122 +13,110 @@
 
     body {
       margin: 0;
-      background: #0b0f19;
-      background-image: 
-        radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.08) 0%, transparent 40%);
+      background: #0d0f12;
       color: #f3f4f6;
       font-family: 'Inter', sans-serif;
       min-height: 100vh;
+      padding: 40px 20px;
     }
 
     .container {
       width: 100%;
-      max-width: 720px;
+      max-width: 900px;
       margin: 0 auto;
-      padding: 50px 20px;
     }
 
     header {
-      margin-bottom: 30px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-      padding-bottom: 20px;
+      margin-bottom: 25px;
     }
 
     h1 {
-      margin: 0 0 6px;
-      font-size: 26px;
+      margin: 0 0 4px;
+      font-size: 22px;
       font-weight: 700;
-      letter-spacing: -0.5px;
-      background: linear-gradient(135deg, #ffffff 0%, #9ca3af 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: #ffffff;
+      letter-spacing: -0.3px;
     }
 
     .subtitle {
       margin: 0;
-      color: #9ca3af;
-      font-size: 14px;
+      color: #8a9099;
+      font-size: 13px;
     }
 
     .section {
-      margin-bottom: 14px;
-      color: #6b7280;
+      margin-bottom: 12px;
+      color: #8a9099;
       font-size: 12px;
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.8px;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      padding-bottom: 8px;
     }
 
+    /* Horizontal grid layout matching the reference image */
     .team-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 14px;
+      margin-bottom: 30px;
     }
 
     .card {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 18px 20px;
-      background: rgba(24, 24, 27, 0.7);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 14px;
+      gap: 14px;
+      padding: 16px;
+      background: #14171c;
+      border: 1px solid #22262e;
+      border-radius: 12px;
       color: white;
       text-decoration: none;
-      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.3);
+      transition: all 0.2s ease;
     }
 
     .card:hover {
-      border-color: rgba(59, 130, 246, 0.4);
-      background: rgba(30, 30, 35, 0.85);
+      border-color: #3b82f6;
+      background: #181c23;
       transform: translateY(-2px);
-      box-shadow: 0 8px 30px -4px rgba(59, 130, 246, 0.15);
-    }
-
-    .left {
-      display: flex;
-      align-items: center;
-      gap: 16px;
     }
 
     .avatar-wrap {
       position: relative;
+      flex-shrink: 0;
     }
 
+    /* Rounded square avatar style from the reference image */
     .avatar,
     .avatar-img {
       width: 52px;
       height: 52px;
-      border-radius: 50%;
+      border-radius: 10px;
     }
 
     .avatar {
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-      color: white;
-      font-size: 15px;
-      font-weight: bold;
-      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+      background: #252b36;
+      color: #9ca3af;
+      font-size: 14px;
+      font-weight: 600;
     }
 
     .avatar-img {
       display: none;
       object-fit: cover;
-      border: 2px solid rgba(255, 255, 255, 0.1);
     }
 
     .status-dot {
       position: absolute;
-      right: 2px;
-      bottom: 2px;
-      width: 13px;
-      height: 13px;
-      border: 2px solid #18181b;
+      right: -3px;
+      bottom: -3px;
+      width: 12px;
+      height: 12px;
+      border: 2px solid #14171c;
       border-radius: 50%;
       background: #71717a;
       transition: background 0.3s ease;
@@ -137,95 +125,35 @@
     .info {
       display: flex;
       flex-direction: column;
-      gap: 3px;
+      gap: 2px;
+      overflow: hidden;
     }
 
     .name {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 600;
-      letter-spacing: -0.2px;
-    }
-
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 13px;
-      font-weight: 500;
-    }
-
-    .extra {
-      color: #9ca3af;
-      font-size: 12px;
-      max-width: 320px;
+      color: #ffffff;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
 
-    .profile-btn {
-      padding: 8px 14px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 8px;
-      color: #d1d5db;
+    .role {
+      color: #8a9099;
       font-size: 12px;
-      font-weight: 500;
-      transition: all 0.2s ease;
-    }
-
-    .card:hover .profile-btn {
-      background: #3b82f6;
-      border-color: #3b82f6;
-      color: white;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .footer {
-      margin-top: 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       color: #6b7280;
       font-size: 12px;
-    }
-
-    .live-indicator {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .pulse-dot {
-      width: 8px;
-      height: 8px;
-      background-color: #10b981;
-      border-radius: 50%;
-      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0% {
-        transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
-      }
-      70% {
-        transform: scale(1);
-        box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
-      }
-      100% {
-        transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
-      }
-    }
-
-    @media (max-width: 600px) {
-      .profile-btn {
-        display: none;
-      }
-      .container {
-        padding: 25px 15px;
-      }
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      padding-top: 16px;
     }
   </style>
 </head>
@@ -236,29 +164,26 @@
 
     <header>
       <h1>Dev Tracker</h1>
-      <p class="subtitle">Real-time development team presence status</p>
+      <p class="subtitle">Development team presence status</p>
     </header>
 
-    <div class="section">Development Team</div>
+    <div class="section">Management</div>
 
     <div class="team-grid" id="teamGrid">
-      <!-- Cards will be dynamically generated here -->
+      <!-- Cards will be dynamically injected here -->
     </div>
 
     <div class="footer">
-      <div class="live-indicator">
-        <span class="pulse-dot"></span>
-        <span>Auto-refreshing active</span>
-      </div>
-      <div id="footer">Checking Roblox...</div>
+      <div id="statusIndicator">Checking Roblox...</div>
+      <div id="footer">Auto-refreshing</div>
     </div>
 
   </div>
 
   <script>
     const USERS = [
-      { id: 423428585, defaultName: "HARRY2O6", initials: "H2" },
-      { id: 154454341, defaultName: "ericplane", initials: "EP" }
+      { id: 423428585, defaultName: "HARRY2O6", initials: "H2", role: "Game Lead" },
+      { id: 154454341, defaultName: "ericplane", initials: "EP", role: "Senior Developer" }
     ];
 
     const POLL_TIME = 15000;
@@ -271,24 +196,19 @@
       unknown: { text: "Unknown", color: "#71717a" }
     };
 
-    // Render cards dynamically
     function renderCards() {
       const grid = document.getElementById("teamGrid");
       grid.innerHTML = USERS.map(user => `
-        <a class="card" href="https://www.roblox.com/users/${user.id}/profile" target="_blank" rel="noopener noreferrer" data-user-id="${user.id}">
-          <div class="left">
-            <div class="avatar-wrap">
-              <div class="avatar" id="avatar-${user.id}">${user.initials}</div>
-              <img class="avatar-img" id="avatarImg-${user.id}" alt="Roblox avatar">
-              <span class="status-dot" id="statusDot-${user.id}"></span>
-            </div>
-            <div class="info">
-              <div class="name" id="name-${user.id}">${user.defaultName}</div>
-              <div class="status-badge" id="status-${user.id}" style="color: #71717a;">Checking...</div>
-              <div class="extra" id="extra-${user.id}">Roblox</div>
-            </div>
+        <a class="card" href="https://www.roblox.com/users/${user.id}/profile" target="_blank" rel="noopener noreferrer">
+          <div class="avatar-wrap">
+            <div class="avatar" id="avatar-${user.id}">${user.initials}</div>
+            <img class="avatar-img" id="avatarImg-${user.id}" alt="Roblox avatar">
+            <span class="status-dot" id="statusDot-${user.id}"></span>
           </div>
-          <div class="profile-btn">View Profile</div>
+          <div class="info">
+            <div class="name" id="name-${user.id}">${user.defaultName}</div>
+            <div class="role" id="role-${user.id}">${user.role}</div>
+          </div>
         </a>
       `).join('');
     }
@@ -338,25 +258,24 @@
         const type = presence ? (typeMap[presence.userPresenceType] || "unknown") : "offline";
         const statusObj = STATUS[type] || STATUS.unknown;
 
-        let extra = "Roblox";
-        if (type === "offline") extra = "Not currently online";
-        if (type === "playing") extra = presence.lastLocation || "Playing on Roblox";
-        if (type === "studio") extra = "Roblox Studio";
+        let roleText = user.role;
+        if (type === "playing" && presence.lastLocation) {
+          roleText = `Playing: ${presence.lastLocation}`;
+        } else if (type === "studio") {
+          roleText = "In Studio";
+        } else if (type === "online") {
+          roleText = "Online";
+        } else if (type === "offline") {
+          roleText = "Offline";
+        }
 
-        // Update UI elements
-        const statusEl = document.getElementById(`status-${user.id}`);
-        statusEl.textContent = statusObj.text;
-        statusEl.style.color = statusObj.color;
-
+        document.getElementById(`role-${user.id}`).textContent = roleText;
         document.getElementById(`statusDot-${user.id}`).style.background = statusObj.color;
-        document.getElementById(`extra-${user.id}`).textContent = extra;
 
       } catch (err) {
         console.error(err);
-        const statusEl = document.getElementById(`status-${user.id}`);
-        statusEl.textContent = "Unknown";
-        statusEl.style.color = STATUS.unknown.color;
-        document.getElementById(`extra-${user.id}`).textContent = "Connection error";
+        document.getElementById(`role-${user.id}`).textContent = "Connection error";
+        document.getElementById(`statusDot-${user.id}`).style.background = STATUS.unknown.color;
       }
     }
 
@@ -368,7 +287,7 @@
           updatePresence(user)
         ]);
       }));
-      document.getElementById("footer").textContent = `Last checked ${new Date().toLocaleTimeString()}`;
+      document.getElementById("statusIndicator").textContent = `Last updated ${new Date().toLocaleTimeString()}`;
     }
 
     // Initialize
